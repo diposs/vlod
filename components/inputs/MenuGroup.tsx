@@ -3,7 +3,7 @@ import { TextInput, TextInputProps, ActionIcon, Group } from '@mantine/core';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 import useStyles from '../style/MenuCss.style';
 interface FormValues {
-  searchr: string | null;
+  searchr: string | string[] | undefined | null;
 }
 export function MenuGroup({ address }:{address?: string;}) {
     const { classes } = useStyles();
@@ -12,12 +12,13 @@ export function MenuGroup({ address }:{address?: string;}) {
       searchr: '',
     },
   });
+  console.log('dds',address);
     //console.log( console.log("profiledid", { address }.address?.address);
-    if (address!== undefined|| null){
+    /*if (address?.address!== undefined|| null){
         form.setValues({
               searchr: address,
             })
-    }
+    }*/
 return (
     <Group spacing="xs" className={classes.links} grow>
         <form onSubmit={form.onSubmit((values) => console.log(values))} >
