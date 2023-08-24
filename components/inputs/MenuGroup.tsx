@@ -1,4 +1,5 @@
 import { useForm } from '@mantine/form';
+import { useRouter } from "next/router";
 import { TextInput, TextInputProps, ActionIcon, Group } from '@mantine/core';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 import useStyles from '../style/MenuCss.style';
@@ -13,10 +14,9 @@ export function MenuGroup({ addressed }:{addressed?: string | string[] | undefin
     },
   });
   console.log('dds',addressed);
-    //console.log( console.log("profiledid", { address }.address?.address);
-    if (addressed!== undefined|| null){
+  const router = useRouter();
         form.setValues({
-              searchr: addressed,
+              searchr: router.query.address.toString(),
             })
     }
 return (
