@@ -47,7 +47,7 @@ function getStrength(password: string) {
 
   return Math.max(100 - (100 / (requirements.length + 1)) * multiplier, 0);
 }
-export const HeaderContainer = ({ ...blueed }) =>  {
+export function HeaderContainer ({ searchbar }:{searchbar?: React.ReactElement;}) {
   const form = useForm({
     initialValues: {
       name: '',
@@ -191,7 +191,7 @@ export const HeaderContainer = ({ ...blueed }) =>  {
   return (
   <Container className={classes.inner} fluid>
     <HeadGroup/>
-    { ...blueed }
+    { searchbar }
     {isLoggedIn && (pKey != null) && (state!.publicKey == inUser)  ? (<GsLogoutButton className={classes.mobile} onClick={signInUser} />) : (<GsButton onClick={signInUser} className={classes.mobile} />)}
     <Burger opened={openedburger} onClick={toggle} className={classes.nonMobile} />
     <Modal opened={opened} onClose={close} size="auto" centered withCloseButton={false} closeOnClickOutside={false}>
