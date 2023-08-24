@@ -16,7 +16,7 @@ export function MenuGroup({ addressed }:{addressed?: string | string[] | undefin
   console.log('dds',addressed);
   const router = useRouter();
         form.setValues({
-              searchr: router.query.address.toString(),
+              searchr: router.query.address,
             })
     
 return (
