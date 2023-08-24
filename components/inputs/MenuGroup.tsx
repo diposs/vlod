@@ -14,11 +14,11 @@ export function MenuGroup({ addressed }:{addressed?: string | string[] | undefin
   });
   console.log('dds',addressed);
     //console.log( console.log("profiledid", { address }.address?.address);
-    /*if (address?.address!== undefined|| null){
+    if (addressed!== undefined|| null){
         form.setValues({
-              searchr: address,
+              searchr: addressed,
             })
-    }*/
+    }
 return (
     <Group spacing="xs" className={classes.links} grow>
         <form onSubmit={form.onSubmit((values) => console.log(values))} >
