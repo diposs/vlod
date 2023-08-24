@@ -8,7 +8,7 @@ import { ethers } from "ethers";
 import { GsButton, GsLogoutButton } from '../buttons/GSButton';
 import { useAuth, usePolybase, useIsAuthenticated } from "@polybase/react";
 import { secp256k1, aescbc, decodeFromString, encodeToString, EncryptedDataAesCbc256 } from '@polybase/util'
-import { useBoundStore3 } from '../../stores/datastate'
+import { useBoundStore3} from '../../stores/datastate'
 //import { ethPersonalSign } from '@polybase/eth'
 //import { Polybase } from "@polybase/client"
 import { useEffect } from 'react';
