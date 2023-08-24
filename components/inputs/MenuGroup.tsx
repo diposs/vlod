@@ -1,4 +1,4 @@
-import { TextInput, TextInputProps, ActionIcon, useMantineTheme } from '@mantine/core';
+import { TextInput, TextInputProps, ActionIcon, Group } from '@mantine/core';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 import useStyles from '../style/MenuCss.style';
 
@@ -11,7 +11,7 @@ return (
       radius="xl"
       size="md"
       rightSection={
-        <ActionIcon size={32} radius="xl" color={theme.primaryColor} variant="filled">
+        <ActionIcon size={32} radius="xl" color="blue" variant="filled">
             <IconArrowRight size="1.1rem" stroke={1.5} />
         </ActionIcon>
       }
