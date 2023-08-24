@@ -2,7 +2,6 @@ import { Container, Modal, Button, Group, TextInput, Box , Burger, Drawer,Progre
 import { useDisclosure  } from '@mantine/hooks';
 import  useStyles  from '../style/container.style'
 import { HeadGroup } from '../inputs/HeaderGroup';
-import { MenuGroup } from '../inputs/MenuGroup';
 import { IconCheck, IconX } from '@tabler/icons-react';
 import { useForm, hasLength, matchesField  } from '@mantine/form';
 import { ethers } from "ethers";
@@ -48,7 +47,7 @@ function getStrength(password: string) {
 
   return Math.max(100 - (100 / (requirements.length + 1)) * multiplier, 0);
 }
-export function HeaderContainer()  {
+export const HeaderContainer = ({ ...blueed }) =>  {
   const form = useForm({
     initialValues: {
       name: '',
@@ -192,7 +191,7 @@ export function HeaderContainer()  {
   return (
   <Container className={classes.inner} fluid>
     <HeadGroup/>
-    <MenuGroup/>
+    { ...blueed }
     {isLoggedIn && (pKey != null) && (state!.publicKey == inUser)  ? (<GsLogoutButton className={classes.mobile} onClick={signInUser} />) : (<GsButton onClick={signInUser} className={classes.mobile} />)}
     <Burger opened={openedburger} onClick={toggle} className={classes.nonMobile} />
     <Modal opened={opened} onClose={close} size="auto" centered withCloseButton={false} closeOnClickOutside={false}>
