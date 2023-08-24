@@ -8,7 +8,7 @@ export function  FirstHeader({ address }:{address?: string | string[] | undefine
   console.log('aad',{ address });
   return (
 <Header height="0dvh" className={classes.styles21}>
-<HeaderContainer searchbar ={<MenuGroup/>} />
+<HeaderContainer searchbar ={<MenuGroup address ={{ address }?.address />}} />
 </Header>
   );
 };  
