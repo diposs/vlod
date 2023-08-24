@@ -41,6 +41,6 @@ return (
 }
 
 MenuGroup.getInitialProps = ({ addressed }:{addressed?: string | string[] | undefined | null;}) => {
-  return {query}
+  return {addressed}
 }
 export default MenuGroup;
