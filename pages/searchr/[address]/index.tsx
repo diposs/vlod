@@ -16,7 +16,8 @@ export async function getServerSideProps() {
   // Fetch data from external API
   const router = useRouter();
   const data = router.query;
- 
+
+  console.log(data);
   // Pass data to the page via props
-  return { props: { data } }
+  return null;
 }
