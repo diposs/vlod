@@ -18,7 +18,7 @@ export function MenuGroup({ addressed }:{addressed?: string | string[] | undefin
         form.setValues({
               searchr: router.query.address.toString(),
             })
-    }
+    
 return (
     <Group spacing="xs" className={classes.links} grow>
         <form onSubmit={form.onSubmit((values) => console.log(values))} >
