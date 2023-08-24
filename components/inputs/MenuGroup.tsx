@@ -5,7 +5,7 @@ import useStyles from '../style/MenuCss.style';
 interface FormValues {
   searchr: string | string[] | undefined | null;
 }
-export function MenuGroup({ addressed }:{addressed?: string | string[] | undefined | null;}) {
+export async function MenuGroup({ addressed }:{addressed?: string | string[] | undefined | null;}) {
     const { classes } = useStyles();
     const form = useForm<FormValues>({
     initialValues: {
@@ -16,7 +16,7 @@ export function MenuGroup({ addressed }:{addressed?: string | string[] | undefin
     //console.log( console.log("profiledid", { address }.address?.address);
     if (addressed!== undefined|| null){
         form.setValues({
-              searchr: addressed,
+              searchr: addressed.toString(),
             })
     }
 return (
