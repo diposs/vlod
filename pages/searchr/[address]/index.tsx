@@ -10,7 +10,6 @@ export default function Searchresult ({ data }) {
       </>
     );
 };
-export default Searchresult;
 
 // This gets called on every request
 export async function getServerSideProps() {
