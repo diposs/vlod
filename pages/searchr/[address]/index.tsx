@@ -18,5 +18,5 @@ export async function getServerSideProps() {
   const data = router.query;
  
   // Pass data to the page via props
-  return { props: { data.address } }
+  return { props: { data } }
 }
