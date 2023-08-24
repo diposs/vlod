@@ -5,14 +5,14 @@ import useStyles from '../style/MenuCss.style';
 interface FormValues {
   searchr: string | string[] | undefined | null;
 }
-export function MenuGroup({ address }:{address?: string;}) {
+export function MenuGroup({ addressed }:{addressed?: string | string[] | undefined | null;}) {
     const { classes } = useStyles();
     const form = useForm<FormValues>({
     initialValues: {
       searchr: '',
     },
   });
-  console.log('dds',address);
+  console.log('dds',addressed);
     //console.log( console.log("profiledid", { address }.address?.address);
     /*if (address?.address!== undefined|| null){
         form.setValues({
