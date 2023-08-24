@@ -1,5 +1,6 @@
 import { useForm } from '@mantine/form';
 import { useRouter } from "next/router";
+import { useEffect } from 'react';
 import { TextInput, TextInputProps, ActionIcon, Group } from '@mantine/core';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 import useStyles from '../style/MenuCss.style';
@@ -15,11 +16,13 @@ export function MenuGroup({ addressed }:{addressed?: string | string[] | undefin
   });
   console.log('dds',addressed);
   const router = useRouter();
-  if (typeof router.query.address === 'string' || router.query.address instanceof String){
+  useEffect(() => {
+    if (addressed) {
         form.setValues({
               searchr: router.query.address,
             })
-  }
+    }
+}, [addressed])
 return (
     <Group spacing="xs" className={classes.links} grow>
         <form onSubmit={form.onSubmit((values) => console.log(values))} >
