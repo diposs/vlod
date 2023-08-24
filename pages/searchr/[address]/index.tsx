@@ -4,7 +4,7 @@ export default function Searchresult () {
   const router = useRouter();
     return (
       <>
-      <FirstHeader/>
+      <FirstHeader address={router.query.address}/>
       </>
     );
 };
