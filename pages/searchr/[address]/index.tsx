@@ -9,7 +9,7 @@ const Searchresult = () => {
 
     return (
       <>
-      <FirstHeader/>
+      <FirstHeader address={profiledid?.address}/>
       </>
     );
 };
