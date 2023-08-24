@@ -5,7 +5,6 @@ import { PolybaseProvider,AuthProvider } from "@polybase/react";
 import { Polybase } from "@polybase/client";
 import { Auth } from "@polybase/auth";
 import { ethPersonalSign } from '@polybase/eth'
-import {FirstHeader} from '../components/header/header1';
 import { useBoundStore3 } from '../stores/datastate'
 
 const polybase = new Polybase({defaultNamespace: process.env.NEXT_PUBLIC_DB,}); 
@@ -43,7 +42,6 @@ export default function App({ Component, pageProps }: AppProps) {
      >
       <PolybaseProvider polybase={polybase}>
        <AuthProvider auth={auth!} polybase={polybase}>
-        <FirstHeader/>
          <Component {...pageProps} />
        </AuthProvider>
       </PolybaseProvider>
