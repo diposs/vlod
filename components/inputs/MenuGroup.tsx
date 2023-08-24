@@ -14,9 +14,9 @@ export async function MenuGroup({ addressed }:{addressed?: string | string[] | u
   });
   console.log('dds',addressed);
     //console.log( console.log("profiledid", { address }.address?.address);
-    if (addressed!== undefined|| null){
+    if (addressed!= undefined|| null){
         form.setValues({
-              searchr: addressed.toString(),
+              searchr: addressed,
             })
     }
 return (
