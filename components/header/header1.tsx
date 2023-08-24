@@ -3,8 +3,9 @@ import  useStyles  from '../style/header.style'
 import { HeaderContainer } from '../container/HeaderContainer';
 import { MenuGroup } from '../inputs/MenuGroup';
 
-export function  FirstHeader() {
+export function  FirstHeader({ address }:{address?: string;}) {
   const { classes } = useStyles();
+  console.log('aad',{ address });
   return (
 <Header height="0dvh" className={classes.styles21}>
 <HeaderContainer searchbar ={<MenuGroup/>} />
