@@ -1,7 +1,10 @@
+import { useForm } from '@mantine/form';
 import { TextInput, TextInputProps, ActionIcon, Group } from '@mantine/core';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 import useStyles from '../style/MenuCss.style';
-
+interface FormValues {
+  search: string | number | undefined | null;
+}
 export function MenuGroup({ address }:{address?: string;}) {
     const { classes } = useStyles();
     const form = useForm<FormValues>({
