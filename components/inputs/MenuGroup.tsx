@@ -1,5 +1,4 @@
 import { useForm } from '@mantine/form';
-import { useRouter } from "next/router";
 import { useEffect } from 'react';
 import { TextInput, TextInputProps, ActionIcon, Group } from '@mantine/core';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
@@ -14,12 +13,10 @@ export function MenuGroup({ addressed }:{addressed?: string | string[] | undefin
       searchr: '',
     },
   });
-  console.log('dds',addressed);
-  const router = useRouter();
   useEffect(() => {
     if (addressed) {
         form.setValues({
-              searchr: router.query.address,
+              searchr: addressed,
             })
     }
 }, [addressed])
