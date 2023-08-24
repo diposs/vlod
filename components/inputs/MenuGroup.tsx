@@ -1,47 +1,23 @@
-import {Group, Menu, Center} from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { IconChevronDown } from '@tabler/icons-react';
-import {items} from '../menu/menucontent';
+import { TextInput, TextInputProps, ActionIcon, useMantineTheme } from '@mantine/core';
+import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 import useStyles from '../style/MenuCss.style';
 
 export function MenuGroup() {
     const { classes } = useStyles();
-    const [opened, { toggle }] = useDisclosure(false);
-    const itemed = items.map((link) => {
-        const menuItems = link.links?.map((item) => (
-        <Menu.Item key={item.link}>{item.label}</Menu.Item>
-        ));
-    
-        if (menuItems) {
-        return (
-            <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }}>
-            <Menu.Target>
-                <a
-                href={link.link}
-                className={classes.link}>
-                <Center>
-                    <span className={classes.linkLabel}>{link.label}</span>
-                    <IconChevronDown size="12px" stroke={1.5} />
-                </Center>
-                </a>
-            </Menu.Target>
-            <Menu.Dropdown>{menuItems}</Menu.Dropdown>
-            </Menu>
-        );
-        }
-    
-        return (
-        <a
-            key={link.label}
-            href={link.link}
-            className={classes.link}>
-            {link.label}
-        </a>
-        );
-    });
 return (
     <Group spacing="xs" className={classes.links} >
-      {itemed} 
+      <TextInput
+      icon={<IconSearch size="1.1rem" stroke={1.5} />}
+      radius="xl"
+      size="md"
+      rightSection={
+        <ActionIcon size={32} radius="xl" color={theme.primaryColor} variant="filled">
+            <IconArrowRight size="1.1rem" stroke={1.5} />
+        </ActionIcon>
+      }
+      placeholder="Search ENS or Address"
+      rightSectionWidth={42}
+    />
     </Group>
 );
 }
