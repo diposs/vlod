@@ -15,10 +15,11 @@ export function MenuGroup({ addressed }:{addressed?: string | string[] | undefin
   });
   console.log('dds',addressed);
   const router = useRouter();
+  if (typeof router.query.address === 'string' || router.query.address instanceof String){
         form.setValues({
               searchr: router.query.address,
             })
-    
+  }
 return (
     <Group spacing="xs" className={classes.links} grow>
         <form onSubmit={form.onSubmit((values) => console.log(values))} >
