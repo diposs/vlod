@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-
+import {FirstHeader} from '../../../../components/header/header1';
 
 
 const Searchresult = () => {
@@ -7,6 +7,9 @@ const Searchresult = () => {
   const profiledid = router.query
 
     return (
+      <>
+      <FirstHeader/>
+      </>
     );
 };
 export default Searchresult;
