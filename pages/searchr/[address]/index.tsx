@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import {FirstHeader} from '../../../components/header/header1';
 
 
-export default function Searchresult ({ data }) {
+export default function Searchresult ({ data }:{data?: string | string[] | undefined;}) {
   console.log(data);
     return (
       <>
@@ -18,5 +18,5 @@ export async function getServerSideProps() {
   const data = await router.query()
  
   // Pass data to the page via props
-  return { props: { data } }
+  return { props: { data?.address } }
 }
