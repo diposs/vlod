@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import {FirstHeader} from '../../../../components/header/header1';
+import {FirstHeader} from '../../../components/header/header1';
 
 
 const Searchresult = () => {
