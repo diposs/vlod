@@ -15,7 +15,7 @@ export default function Searchresult ({ data }:{data?: string | string[] | undef
 export async function getServerSideProps() {
   // Fetch data from external API
   const router = useRouter();
-  const data = await router.query()
+  const data = router.query;
  
   // Pass data to the page via props
   return { props: { data?.address } }
