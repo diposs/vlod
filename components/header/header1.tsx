@@ -7,9 +7,7 @@ export function  FirstHeader() {
   const { classes } = useStyles();
   return (
 <Header height="0dvh" className={classes.styles21}>
-<HeaderContainer>
-<MenuGroup/>
-</HeaderContainer>
+<HeaderContainer searchbar ={<MenuGroup/>} />
 </Header>
   );
 };  
