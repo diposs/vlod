@@ -5,7 +5,7 @@ import useStyles from '../style/MenuCss.style';
 export function MenuGroup() {
     const { classes } = useStyles();
 return (
-    <Group spacing="xs" className={classes.links} grow width="50dvw" >
+    <Group spacing="xs" className={classes.links} grow>
       <TextInput
       icon={<IconSearch size="1.1rem" stroke={1.5} />}
       radius="xl"
