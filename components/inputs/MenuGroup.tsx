@@ -5,7 +5,7 @@ import useStyles from '../style/MenuCss.style';
 interface FormValues {
   searchr: string | string[] | undefined | null;
 }
-export async function MenuGroup({ addressed }:{addressed?: string | string[] | undefined | null;}) {
+const MenuGroup = ({ addressed }:{addressed?: string | string[] | undefined | null;}) => {
     const { classes } = useStyles();
     const form = useForm<FormValues>({
     initialValues: {
@@ -40,3 +40,7 @@ return (
 );
 }
 
+MenuGroup.getInitialProps = ({ addressed }:{addressed?: string | string[] | undefined | null;}) => {
+  return {query}
+}
+export default MenuGroup;
