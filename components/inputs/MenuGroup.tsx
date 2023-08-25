@@ -5,13 +5,13 @@ import { useRouter } from 'next/router';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 import useStyles from '../style/MenuCss.style';
 interface FormValus {
-  searchr: string | string[] | undefined | null;
+  searchr: string | null ;
 }
-export function MenuGroup({ addressed }:{addressed?: string | string[] | undefined | null;}) {
+export function MenuGroup() {
     const { classes } = useStyles();
     const form = useForm<FormValus>({
     initialValues: {
-      searchr: '',
+      searchr: null,
     },
   });
   const router = useRouter()
@@ -19,8 +19,6 @@ export function MenuGroup({ addressed }:{addressed?: string | string[] | undefin
     if (typeof values.searchr === 'string'){
     console.log(values);
     router.push('/search/'+values.searchr)
-    form.reset();
-    console.log(values);
     } else{
       form.setErrors({ searchr: 'Search Input Empty'});
       form.errors;
