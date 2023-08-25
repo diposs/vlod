@@ -45,7 +45,7 @@ return (
             <IconArrowRight size="1.1rem" stroke={1.5} />
         </ActionIcon>
       }
-      placeholder="Search ENS or Address"
+      placeholder="Search NFT By ENS OR Wallet Address"
       rightSectionWidth={42}
       {...form.getInputProps('searchr')}
     />
