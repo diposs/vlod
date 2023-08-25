@@ -8,7 +8,7 @@ interface FormValus {
   search: string | null;
 }
 export function SearchBar() {
-  const [visible, { toggledd }] = useDisclosure(false);
+  const [visible, { toggle }] = useDisclosure(false);
   const form = useForm<FormValus>({
     initialValues: {
       search: null,
@@ -17,7 +17,7 @@ export function SearchBar() {
   const router = useRouter()
   const handleSearch = async(values: FormValus) => {
     if (typeof values.search === 'string'){
-      toggledd();
+      toggle();
       console.log(values);
       router.push('/search/'+values.search)
       form.reset();
