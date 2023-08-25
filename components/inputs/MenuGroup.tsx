@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import { TextInput, TextInputProps, ActionIcon, Group } from '@mantine/core';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 import useStyles from '../style/MenuCss.style';
-interface FormValues {
-  searchr: string | string[] | undefined | null;
+interface FormValus {
+  searchr: string | undefined | null;
 }
 export function MenuGroup({ addressed }:{addressed?: string | string[] | undefined | null;}) {
     const { classes } = useStyles();
@@ -13,6 +13,12 @@ export function MenuGroup({ addressed }:{addressed?: string | string[] | undefin
       searchr: '',
     },
   });
+  const handleSearch = async(values: FormValus) => {
+    console.log(values);
+    router.push('/search/'+values.searchr)
+    form.reset();
+    console.log(values);
+  }
   useEffect(() => {
     if (addressed) {
         form.setValues({
@@ -22,7 +28,7 @@ export function MenuGroup({ addressed }:{addressed?: string | string[] | undefin
 }, [addressed])
 return (
     <Group spacing="xs" className={classes.links} grow>
-        <form onSubmit={form.onSubmit((values) => console.log(values))} >
+        <form onSubmit={form.onSubmit(handleSearch)} >
       <TextInput
       icon={<IconSearch size="1.1rem" stroke={1.5} />}
       radius="xl"
