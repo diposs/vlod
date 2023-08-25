@@ -1,6 +1,7 @@
 import { useForm } from '@mantine/form';
 import { useEffect } from 'react';
 import { TextInput, TextInputProps, ActionIcon, Group } from '@mantine/core';
+import { useRouter } from 'next/router';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 import useStyles from '../style/MenuCss.style';
 interface FormValus {
@@ -13,6 +14,7 @@ export function MenuGroup({ addressed }:{addressed?: string | string[] | undefin
       searchr: '',
     },
   });
+  const router = useRouter()
   const handleSearch = async(values: FormValus) => {
     if (typeof values.searchr === 'string'){
     console.log(values);
