@@ -1,10 +1,10 @@
 import { useForm } from '@mantine/form';
 import { IconSearch } from '@tabler/icons-react';
 import { Input } from '@mantine/core';
-import { useRouter } from 'next/router
+import { useRouter } from 'next/router';
 import { Searchiconright } from '../icons/searchIcon'
 interface FormValus {
-  search: string | number | undefined | null;
+  search: string | undefined | null;
 }
 export function SearchBar() {
   const form = useForm<FormValues>({
