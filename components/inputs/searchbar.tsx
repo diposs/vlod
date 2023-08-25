@@ -7,7 +7,7 @@ interface FormValus {
   search: string | undefined | null;
 }
 export function SearchBar() {
-  const form = useForm<FormValues>({
+  const form = useForm<FormValus>({
     initialValues: {
       search: '',
     },
