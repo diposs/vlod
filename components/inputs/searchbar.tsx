@@ -27,6 +27,7 @@ export function SearchBar() {
     }
   }
   return (
+    <>
     <LoadingOverlay
       loaderProps={{ size: 'lg', color: 'pink', variant: 'bars' }}
       overlayOpacity={0.3}
@@ -48,5 +49,6 @@ export function SearchBar() {
       {...form.getInputProps('search')}
     />
     </form>
+      </>
   );
 }
