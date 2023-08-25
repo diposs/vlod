@@ -8,16 +8,21 @@ interface FormValus {
 }
 export function MenuGroup({ addressed }:{addressed?: string | string[] | undefined | null;}) {
     const { classes } = useStyles();
-    const form = useForm<FormValues>({
+    const form = useForm<FormValus>({
     initialValues: {
       searchr: '',
     },
   });
   const handleSearch = async(values: FormValus) => {
+    if (typeof values.searchr === 'string' || values.searchr instanceof String){
     console.log(values);
     router.push('/search/'+values.searchr)
     form.reset();
     console.log(values);
+    } else{
+      form.setErrors({ searchr: 'Search Input Empty'});
+      form.errors;
+    }
   }
   useEffect(() => {
     if (addressed) {
