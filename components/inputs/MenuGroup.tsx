@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 import useStyles from '../style/MenuCss.style';
 interface FormValus {
-  searchr: string | undefined | null;
+  searchr: string | string[] | undefined | null;
 }
 export function MenuGroup({ addressed }:{addressed?: string | string[] | undefined | null;}) {
     const { classes } = useStyles();
