@@ -16,7 +16,7 @@ export function SearchBar() {
   const handleSearch = async(values: FormValus) => {
     if (typeof values.search === 'string'){
     console.log(values);
-    router.push('/search/'+values.searchr)
+    router.push('/search/'+values.search)
     form.reset();
     console.log(values);
     } else{
@@ -31,7 +31,7 @@ export function SearchBar() {
       rightSection={< Searchiconright type="submit" /> }
       miw="60dvw"
       data-autofocus
-      placeholder="Search"
+      placeholder="Search NFT By ENS OR Wallet Address"
       variant="filled"
       radius="xl"
       size="xl"
