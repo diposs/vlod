@@ -14,7 +14,7 @@ export function MenuGroup({ addressed }:{addressed?: string | string[] | undefin
     },
   });
   const handleSearch = async(values: FormValus) => {
-    if (typeof values.searchr === 'string' || values.searchr instanceof String){
+    if (typeof values.searchr === 'string'){
     console.log(values);
     router.push('/search/'+values.searchr)
     form.reset();
