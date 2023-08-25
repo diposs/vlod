@@ -27,12 +27,12 @@ export function MenuGroup({ addressed }:{addressed?: string | string[] | undefin
     }
   }
   useEffect(() => {
-    if (router.query.slug) {
+    if (typeof router.query.address === 'string') {
         form.setValues({
-              searchr: router.query.slug,
+              searchr: router.query.address,
             })
     }
-}, [router.query.slug])
+}, [router.query.address])
 return (
     <Group spacing="xs" className={classes.links} grow>
         <form onSubmit={form.onSubmit(handleSearch)} >
