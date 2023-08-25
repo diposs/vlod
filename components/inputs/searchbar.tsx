@@ -14,12 +14,16 @@ export function SearchBar() {
   });
   const router = useRouter()
   const handleSearch = async(values: FormValus) => {
+    if (typeof values.search === 'string'){
     console.log(values);
-    router.push('/search/'+values.search)
+    router.push('/search/'+values.searchr)
     form.reset();
     console.log(values);
+    } else{
+      form.setErrors({ search: 'Search Input Empty'});
+      form.errors;
+    }
   }
-
   return (
     <form onSubmit={form.onSubmit(handleSearch)}  >
     <Input
