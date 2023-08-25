@@ -7,7 +7,7 @@ export function  FirstHeader({ address }:{address?: string | string[] | undefine
   const { classes } = useStyles();
   return (
 <Header height="0dvh" className={classes.styles21}>
-<HeaderContainer searchbar ={<MenuGroup addressed ={{ address }?.address }/>} />
+<HeaderContainer searchbar ={<MenuGroup />} />
 </Header>
   );
 };  
