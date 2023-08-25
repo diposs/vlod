@@ -13,7 +13,7 @@ export function SearchBar() {
     },
   });
   const router = useRouter()
-  const handleSubmit = async(values: FormValus) => {
+  const handleSearch = async(values: FormValus) => {
     console.log(values);
     router.push('/search/'+values.search)
     form.reset();
