@@ -4,12 +4,12 @@ import { Input } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { Searchiconright } from '../icons/searchIcon'
 interface FormValus {
-  search: string | undefined | null;
+  search: string | null;
 }
 export function SearchBar() {
   const form = useForm<FormValus>({
     initialValues: {
-      search: '',
+      search: null,
     },
   });
   const router = useRouter()
