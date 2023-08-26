@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { ethers } from "ethers";
 type Data = {
   name: string
 }
