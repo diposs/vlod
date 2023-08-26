@@ -2,7 +2,7 @@ import { Center } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-function getStrength (password: string) {
+function PasswordRequirement (password: string) {
   if (password=='goat') {
      const result = password.replace(/\s/g, '');
     return (
@@ -27,7 +27,7 @@ export function SearchPage() {
   },[router.query.address])
     return (
         <Center h= '97dvh'>
-            <getStrength password ={data}/>
+            <PasswordRequirement password ={data}/>
         </Center>
     );
 }
