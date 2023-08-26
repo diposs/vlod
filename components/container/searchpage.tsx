@@ -3,15 +3,16 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 export function SearchPage() {
-  const router = useRouter()
+  const router = useRouter();
+  var pd = 'goat';
   useEffect(() => {
     if (typeof router.query.address === 'string') {
-        const pd = router.query.address;
+        var pd = router.query.address;
     }
   },[router.query.address])
     return (
         <Center h= '97dvh'>
-            <p>{pd || 'goat'}</p>
+            <p>{pd}</p>
         </Center>
     );
 }
