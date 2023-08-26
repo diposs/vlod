@@ -4,27 +4,15 @@ import { Center } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { ethers } from "ethers";
-type Data = {
-  name: string
-}
-async function handler(datad: string, req?: NextApiRequest,
-  res?: NextApiResponse<Data>){
-    const router = useRouter();
-  var url = 'https://eth-mainnet.blastapi.io/275cbdc6-c032-4075-8897-cc50b0db3fd5';
-  var provider =  await new ethers.providers.JsonRpcProvider(url);
-  const resolver = await provider.getResolver(datad);
-  var reclaim = 'Failed to Load';
-  if (resolver != null){
-      const reclaim =  await resolver.getAddress() || 'error';
-  }else{
-   const reclaim =  'Invalid ENS Address';
-    }
-  res.end(reclaim)
-}
+
 const Etherchecker =  async(dadd:string) => {
-  const url = await handler (dadd);
+  const response = await fetch('/api/ensck.ts', {
+      method: 'POST',
+      body: data,
+    })
+  const data = await response
       return (
-    <p>{url}</p>
+    <p>{data}</p>
   );
     
 }
