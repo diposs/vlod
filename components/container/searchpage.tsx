@@ -1,6 +1,7 @@
 import { Center } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { ethers } from "ethers";
 
 function PasswordRequirement ({ password }: { password: string }) {
   var shrink = password.replace(/\s/g, '');
@@ -9,9 +10,19 @@ function PasswordRequirement ({ password }: { password: string }) {
   var result =  vault.endsWith(".eth");
   var result2 = /(\b0x[a-f0-9]{40}\b)/g.test(para);
   if (result==true) {
-    return (
-    <p>ens</p>
+    var url = 'https://eth-mainnet.blastapi.io/275cbdc6-c032-4075-8897-cc50b0db3fd5';
+    var provider = await new ethers.providers.JsonRpcProvider(url);
+    const resolver = await provider.getResolver(vault);
+    if (resolver != null){
+      const reclaim = await resolver.getAddress();
+      return (
+    <p>{reclaim}</p>
   );
+    }else{
+      return (
+    <p>Invalid ENS Address</p>
+  );
+    }
   } 
   if(result2 == true && result == false){
     var resp = para.match(/(\b0x[a-f0-9]{40}\b)/g);
