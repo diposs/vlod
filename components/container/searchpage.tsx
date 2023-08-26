@@ -13,7 +13,8 @@ function PasswordRequirement ({ password }: { password: string }) {
   } 
   if(result2 == true && result == false){
     var resp = shrink.match(/(\b0x[a-f0-9]{40}\b)/g);
-    const resulted = resp[0] || 'goat';
+    if (resp != null){
+      const resulted = resp[0] || 'goat';
     console.log(resp);
     return (
       <>
@@ -21,6 +22,10 @@ function PasswordRequirement ({ password }: { password: string }) {
     <p>eth address</p>
         </>
   );
+    } else{
+      <p> ERR WITH SEARCH QUERY TRY AGAIN</p>
+    }
+    
   } else{
     return (
       <>
