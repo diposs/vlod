@@ -2,7 +2,7 @@ import { Center } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { ethers } from "ethers";
-const etherchecker =  async({ dataed }: { dataed: string }) => {
+const Etherchecker =  async({ dataed }: { dataed: string }) => {
   var url = 'https://eth-mainnet.blastapi.io/275cbdc6-c032-4075-8897-cc50b0db3fd5';
   var provider =  await new ethers.providers.JsonRpcProvider(url);
   const resolver = await provider.getResolver(dataed);
@@ -26,7 +26,7 @@ function PasswordRequirement ({ password }: { password: string }) {
   if (result==true) {
     console.log('ddoings');
     return (
-    <etherchecker dataed = {vault} />
+    <Etherchecker dataed = {vault} />
       );
   } 
   if(result2 == true && result == false){
