@@ -1,6 +1,6 @@
 import { Center } from '@mantine/core';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export function SearchPage() {
   const router = useRouter();
