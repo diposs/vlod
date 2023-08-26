@@ -4,7 +4,7 @@ import { Center } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-const Etherchecker =  async(dadd:string) => {
+const Etherchecker =  async({dadd}:{dadd:string}) => {
   const response = await fetch('/api/ensck.ts', {
       method: 'POST',
       body: dadd,
