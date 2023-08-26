@@ -14,7 +14,7 @@ function PasswordRequirement ({ password }: { password: string }) {
     var provider =  new ethers.providers.JsonRpcProvider(url);
     const resolver =  provider.getResolver(vault);
     if (resolver != null){
-      const reclaim = await resolver.getAddress();
+      const reclaim =  resolver.getAddress();
       return (
     <p>{reclaim}</p>
   );
