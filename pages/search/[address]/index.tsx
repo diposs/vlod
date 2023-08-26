@@ -4,17 +4,6 @@ import { Center } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-const Etherchecker =  async({dadd}:{dadd:string}) => {
-  const response = await fetch('/api/ensck.ts', {
-      method: 'POST',
-      body: dadd,
-    })
-  const data = await response.toString();
-      return (
-    <p>{data}</p>
-  );
-    
-}
 function PasswordRequirement ({ password }: { password: string }) {
   var shrink = password.replace(/\s/g, '');
   var para = password.toLocaleLowerCase();
@@ -23,9 +12,24 @@ function PasswordRequirement ({ password }: { password: string }) {
   var result2 = /(\b0x[a-f0-9]{40}\b)/g.test(para);
   if (result==true) {
     console.log('ddoings');
-    return (
-    <Etherchecker dadd = {vault} />
-      );
+    const [data, setData] = useState('')
+    const [isLoading, setLoading] = useState(true)
+    useEffect(() => {
+      fetch('/api/ensck.ts', {
+        method: 'POST',
+        body: vault,
+      })
+        .then((res) => toString())
+        .then((data) => {
+          setData(data)
+          setLoading(false)
+        })
+      }, [vault])
+  if (isLoading) return <p>Loading...</p>
+  if (!data) return <p>No profile data</p>
+      return (
+    <p>{vault}</p>
+  );
   } 
   if(result2 == true && result == false){
     var resp = para.match(/(\b0x[a-f0-9]{40}\b)/g);
