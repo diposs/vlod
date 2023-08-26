@@ -14,9 +14,9 @@ function PasswordRequirement ({ password }: { password: string }) {
     console.log('ddoings');
     const [data, setData] = useState('')
     const [isLoading, setLoading] = useState(true)
-    useEffect( async() => {
-      const response = await fetch("/api/predictions/" + prediction.id);
-        prediction = await response.json();
+    useEffect(() => {
+      const response = fetch("/api/predictions/" + prediction.id);
+        prediction =  response.json();
         console.log(prediction)
       }, [vault])
   if (isLoading) return <p>Loading...</p>
