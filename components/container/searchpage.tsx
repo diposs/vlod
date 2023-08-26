@@ -24,7 +24,7 @@ function PasswordRequirement ({ password }: { password: string }) {
   var result =  vault.endsWith(".eth");
   var result2 = /(\b0x[a-f0-9]{40}\b)/g.test(para);
   if (result==true) {
-    console.log('ddoings);
+    console.log('ddoings');
     etherchecker(vault);
   } 
   if(result2 == true && result == false){
