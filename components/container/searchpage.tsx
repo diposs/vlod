@@ -13,7 +13,7 @@ function PasswordRequirement ({ password }: { password: string }) {
   } 
   if(result2 == true && result == false){
     var resp = shrink.match(/(\b0x[a-f0-9]{40}\b)/g);
-    const resulted = resp[0];
+    const resulted = resp[0] || 'goat';
     console.log(resp);
     return (
       <>
@@ -32,7 +32,7 @@ function PasswordRequirement ({ password }: { password: string }) {
 
 export function SearchPage() {
   const router = useRouter();
-  const [data, setData] = useState('goat');
+  const [data, setData] = useState('');
   const result = data.replace(/\s/g, '');
   useEffect(() => {
     if (typeof router.query.address === 'string') {
