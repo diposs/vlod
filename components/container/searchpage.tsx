@@ -34,7 +34,7 @@ function PasswordRequirement ({ password }: { password: string }) {
         </>
   );
 }
-
+}
 export function SearchPage() {
   const router = useRouter();
   const [data, setData] = useState('');
