@@ -14,9 +14,10 @@ export default async function handler(
   console.log(resolver);
   var reclaim = 'Failed to Load';
   if (resolver != null){
-      const reclaim =  await resolver.getAddress() || 'error';
+      var reclaim =  await resolver.getAddress() || 'error';
   }else{
-   const reclaim =  'Invalid ENS Address';
+   var reclaim =  'Invalid ENS Address';
     }
+  console.log(reclaim);
   res.status(200).json({ name: reclaim });
 }
