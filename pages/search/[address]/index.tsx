@@ -17,7 +17,7 @@ function PasswordRequirement ({ password }: { password: string }) {
     useEffect(() => {
       const fetchData = async () => {
         const response = await fetch("/api/ensck", {
-      method: 'GET',
+      method: 'POST',
       body: vault,
     });
                var prediction = await response.json();
