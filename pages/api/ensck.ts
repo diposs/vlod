@@ -14,5 +14,5 @@ async function handler(req: NextApiRequest, res: NextApiResponse<Data>){
   }else{
    const reclaim =  'Invalid ENS Address';
     }
-  res.end(reclaim)
+  res.send(reclaim)
 }
