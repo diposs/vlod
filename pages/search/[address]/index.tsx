@@ -20,8 +20,9 @@ function PasswordRequirement ({ password }: { password: string }) {
       method: 'POST',
       body: vault,
     });
-               var prediction = await response.json();
-        console.log(prediction);
+               var data = await response.json();
+        setData(data.?name)
+        setLoading(false
       }
       fetchData().catch((e) => {
       // handle the error as needed
