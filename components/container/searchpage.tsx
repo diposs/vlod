@@ -3,8 +3,9 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 function PasswordRequirement ({ password }: { password: string }) {
-  var shrink = password.replace(/\s/g, '')
-  let vault = shrink.toLocaleLowerCase()
+  var shrink = password.replace(/\s/g, '');
+  var para = password.toLocaleLowerCase();
+  let vault = shrink.toLocaleLowerCase();
   var result =  vault.endsWith(".eth");
   var result2 = /(\b0x[a-f0-9]{40}\b)/g.test(vault);
   if (result==true) {
