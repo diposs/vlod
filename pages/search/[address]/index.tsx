@@ -22,7 +22,7 @@ function PasswordRequirement ({ password }: { password: string }) {
     });
                var data = await response.json();
         setData(data.?name)
-        setLoading(false
+        setLoading(false)
       }
       fetchData().catch((e) => {
       // handle the error as needed
