@@ -1,4 +1,5 @@
 import { Center } from '@mantine/core';
+import { useRouter } from 'next/router';
 
 export function SearchPage() {
   const router = useRouter()
