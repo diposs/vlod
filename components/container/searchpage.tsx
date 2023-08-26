@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 
 export function SearchPage() {
   const router = useRouter();
-  const [data, setData] = useState('goat')
+  const [data, setData] = useState('goat');
+  const result = data.replace(/\s/g, '');
   useEffect(() => {
     if (typeof router.query.address === 'string') {
          setData(router.query.address);
@@ -12,7 +13,7 @@ export function SearchPage() {
   },[router.query.address])
     return (
         <Center h= '97dvh'>
-            <p>{data}</p>
+            <p>{result}</p>
         </Center>
     );
 }
