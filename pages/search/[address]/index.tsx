@@ -23,6 +23,10 @@ function PasswordRequirement ({ password }: { password: string }) {
                var prediction = await response.json();
         console.log(prediction);
       }
+      fetchData().catch((e) => {
+      // handle the error as needed
+      console.error('An error occurred while fetching the data: ', e)
+    })
       
   }, [vault])
   if (isLoading) return <p>Loading...</p>
