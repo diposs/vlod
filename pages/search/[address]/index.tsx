@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 const Etherchecker =  async(dadd:string) => {
   const response = await fetch('/api/ensck.ts', {
       method: 'POST',
-      body: data,
+      body: dadd,
     })
   const data = await response
       return (
