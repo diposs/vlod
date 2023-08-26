@@ -14,5 +14,5 @@ export default async function handler(
   }else{
    const reclaim =  'Invalid ENS Address';
     }
-  res.send(reclaim);
+  res.end(reclaim);
 }
