@@ -14,16 +14,10 @@ function PasswordRequirement ({ password }: { password: string }) {
     console.log('ddoings');
     const [data, setData] = useState('')
     const [isLoading, setLoading] = useState(true)
-    useEffect(() => {
-      fetch('/api/ensck', {
-        method: 'POST',
-        body: vault,
-      })
-        .then((res) => console.log(res))/*res.toString())
-        .then((data) => {
-          setData(data)
-          setLoading(false)
-        })*/
+    useEffect( async() => {
+      const response = await fetch("/api/predictions/" + prediction.id);
+        prediction = await response.json();
+        console.log(prediction)
       }, [vault])
   if (isLoading) return <p>Loading...</p>
   if (!data) return <p>No profile data</p>
