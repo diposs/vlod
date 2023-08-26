@@ -15,7 +15,11 @@ function PasswordRequirement ({ password }: { password: string }) {
     const [data, setData] = useState('')
     const [isLoading, setLoading] = useState(true)
     useEffect(() => {
-      const response = fetch("/api/predictions/" + prediction.id);
+      const response = fetch("/api/ensjs/", {
+      method: 'POST',
+      body: vault,
+    })
+ ;
         prediction =  response.json();
         console.log(prediction)
       }, [vault])
