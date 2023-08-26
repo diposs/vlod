@@ -13,6 +13,7 @@ async function handler(req: NextApiRequest,
   var url = 'https://eth-mainnet.blastapi.io/275cbdc6-c032-4075-8897-cc50b0db3fd5';
   var provider =  await new ethers.providers.JsonRpcProvider(url);
   const resolver = await provider.getResolver(datad);
+  var reclaim = 'Failed to Load';
   if (resolver != null){
       const reclaim =  await resolver.getAddress() || 'error';
   }else{
