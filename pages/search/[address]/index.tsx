@@ -8,11 +8,11 @@ type Data = {
   name: string
 }
 async function handler(req: NextApiRequest,
-  res: NextApiResponse<Data>){
+  res: NextApiResponse<Data>,datad: string){
     const router = useRouter();
   var url = 'https://eth-mainnet.blastapi.io/275cbdc6-c032-4075-8897-cc50b0db3fd5';
   var provider =  await new ethers.providers.JsonRpcProvider(url);
-  const resolver = await provider.getResolver(router.query.address);
+  const resolver = await provider.getResolver(datad);
   if (resolver != null){
       const reclaim =  await resolver.getAddress() || 'error';
   }else{
@@ -20,8 +20,8 @@ async function handler(req: NextApiRequest,
     }
   res.end(reclaim)
 }
-const Etherchecker =  async() => {
-  const url = await handler ();
+const Etherchecker =  async(dadd:string) => {
+  const url = await handler (dadd);
       return (
     <p>{url}</p>
   );
@@ -36,7 +36,7 @@ function PasswordRequirement ({ password }: { password: string }) {
   if (result==true) {
     console.log('ddoings');
     return (
-    <Etherchecker />
+    <Etherchecker dadd = {vault} />
       );
   } 
   if(result2 == true && result == false){
