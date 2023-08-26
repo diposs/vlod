@@ -3,7 +3,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { Center } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { ethers } from "ethers";
 
 const Etherchecker =  async(dadd:string) => {
   const response = await fetch('/api/ensck.ts', {
