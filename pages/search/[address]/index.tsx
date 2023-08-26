@@ -19,7 +19,7 @@ function PasswordRequirement ({ password }: { password: string }) {
         method: 'POST',
         body: vault,
       })
-        .then((res) => toString())
+        .then((res) => res.toString())
         .then((data) => {
           setData(data)
           setLoading(false)
