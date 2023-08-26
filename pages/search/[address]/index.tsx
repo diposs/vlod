@@ -15,10 +15,15 @@ function PasswordRequirement ({ password }: { password: string }) {
     const [data, setData] = useState('')
     const [isLoading, setLoading] = useState(true)
     useEffect(() => {
-      fetch("/api/ensck", {
+      const fetchData = async () => {
+        const response = await fetch("/api/ensck", {
       method: 'POST',
       body: vault,
-    }).then((res) => console.log(res))
+    });
+               var prediction = await response.json();
+        console.log(prediction);
+      }
+      
   }, [vault])
   if (isLoading) return <p>Loading...</p>
   if (!data) return <p>No profile data</p>
