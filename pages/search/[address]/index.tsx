@@ -15,7 +15,7 @@ function PasswordRequirement ({ password }: { password: string }) {
     const [data, setData] = useState('')
     const [isLoading, setLoading] = useState(true)
     useEffect(() => {
-      fetch('/api/ensck.ts', {
+      fetch('/api/ensck', {
         method: 'POST',
         body: vault,
       })
