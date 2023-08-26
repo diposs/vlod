@@ -28,7 +28,7 @@ function PasswordRequirement ({ password }: { password: string }) {
   if (isLoading) return <p>Loading...</p>
   if (!data) return <p>No profile data</p>
       return (
-    <p>{vault}</p>
+    <p>{data}</p>
   );
   } 
   if(result2 == true && result == false){
