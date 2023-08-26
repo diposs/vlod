@@ -4,15 +4,16 @@ import { useEffect, useState } from 'react';
 
 function PasswordRequirement ({ password }: { password: string }) {
   var shrink = password.replace(/\s/g, '')
-  var result =  shrink.endsWith(".eth");
-  var result2 = /(\b0x[a-f0-9]{40}\b)/g.test(shrink);
+  let vault = text.toLocaleLowerCase()
+  var result =  vault.endsWith(".eth");
+  var result2 = /(\b0x[a-f0-9]{40}\b)/g.test(vault);
   if (result==true) {
     return (
     <p>ens</p>
   );
   } 
   if(result2 == true && result == false){
-    var resp = shrink.match(/(\b0x[a-f0-9]{40}\b)/g);
+    var resp = vault.match(/(\b0x[a-f0-9]{40}\b)/g);
     if (resp != null){
       const resulted = resp[0] || 'goat';
     console.log(resp);
@@ -30,7 +31,6 @@ function PasswordRequirement ({ password }: { password: string }) {
     return (
       <>
     <p>{shrink}</p>
-    <p>vvgv</p>
         </>
   );
 }
