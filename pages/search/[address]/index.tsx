@@ -20,7 +20,7 @@ function PasswordRequirement ({ password }: { password: string }) {
       body: vault,
     })
  ;
-        prediction =  response.json();
+        var prediction =  response.json();
         console.log(prediction)
       }, [vault])
   if (isLoading) return <p>Loading...</p>
