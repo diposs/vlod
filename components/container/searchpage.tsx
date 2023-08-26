@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 
 function getStrength (password: string) {
   if (password=='goat') {
-     const result = data.replace(/\s/g, '');
+     const result = password.replace(/\s/g, '');
     return (
     <p>fgdd</p>
   );
   } else{
-    const result = data.replace(/\s/g, '');
+    const result = password.replace(/\s/g, '');
     return (
     <p>{result}</p>
   );
