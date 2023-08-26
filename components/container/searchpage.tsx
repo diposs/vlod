@@ -7,14 +7,14 @@ function PasswordRequirement ({ password }: { password: string }) {
   var para = password.toLocaleLowerCase();
   let vault = shrink.toLocaleLowerCase();
   var result =  vault.endsWith(".eth");
-  var result2 = /(\b0x[a-f0-9]{40}\b)/g.test(vault);
+  var result2 = /(\b0x[a-f0-9]{40}\b)/g.test(para);
   if (result==true) {
     return (
     <p>ens</p>
   );
   } 
   if(result2 == true && result == false){
-    var resp = vault.match(/(\b0x[a-f0-9]{40}\b)/g);
+    var resp = para.match(/(\b0x[a-f0-9]{40}\b)/g);
     if (resp != null){
       const resulted = resp[0] || 'goat';
     console.log(resp);
