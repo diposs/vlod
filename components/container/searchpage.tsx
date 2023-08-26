@@ -3,20 +3,31 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 function PasswordRequirement ({ password }: { password: string }) {
-  if (password=='goat') {
-     const result = password.replace(/\s/g, '');
+  var shrink = password.replace(/\s/g, '')
+  var result =  shrink.endsWith(".eth");
+  var result2 = /(\b0x[a-f0-9]{40}\b)/g.test(shrink);
+  if (result==true) {
     return (
-    <p>fgdd</p>
+    <p>ens</p>
   );
-  } else{
-    const result = password.replace(/\s/g, '');
+  } 
+  if(result2 == true && result == false){
+    var resp = shrink.match(/(\b0x[a-f0-9]{40}\b)/g);
+    const resulted = resp[0];
+    console.log(resp);
     return (
       <>
-    <p>{result}</p>
+    <p>{resulted}</p>
+    <p>eth address</p>
+        </>
+  );
+  } else{
+    return (
+      <>
+    <p>{shrink}</p>
     <p>vvgv</p>
         </>
   );
-  }
 }
 
 export function SearchPage() {
