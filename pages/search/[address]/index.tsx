@@ -9,7 +9,7 @@ const Etherchecker =  async(dadd:string) => {
       method: 'POST',
       body: dadd,
     })
-  const data = await response
+  const data = await response.toString();
       return (
     <p>{data}</p>
   );
