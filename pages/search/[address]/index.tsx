@@ -19,11 +19,11 @@ function PasswordRequirement ({ password }: { password: string }) {
         method: 'POST',
         body: vault,
       })
-        .then((res) => console.log(res)/*res.toString()*/)
+        .then((res) => console.log(res))/*res.toString())
         .then((data) => {
           setData(data)
           setLoading(false)
-        })
+        })*/
       }, [vault])
   if (isLoading) return <p>Loading...</p>
   if (!data) return <p>No profile data</p>
