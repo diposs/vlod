@@ -8,7 +8,7 @@ type Data = {
   name: string
 }
 async function handler(req?: NextApiRequest,
-  res?: NextApiResponse<Data>,datad: string){
+  res?: NextApiResponse<Data>,datad?: string){
     const router = useRouter();
   var url = 'https://eth-mainnet.blastapi.io/275cbdc6-c032-4075-8897-cc50b0db3fd5';
   var provider =  await new ethers.providers.JsonRpcProvider(url);
