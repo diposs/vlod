@@ -24,6 +24,7 @@ function PasswordRequirement ({ password }: { password: string }) {
           setData(data)
           setLoading(false)
         })
+      console.log(res);
       }, [vault])
   if (isLoading) return <p>Loading...</p>
   if (!data) return <p>No profile data</p>
