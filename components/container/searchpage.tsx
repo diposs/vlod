@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { ethers } from "ethers";
 
-function PasswordRequirement ({ password }: { password: string }) {
+async function PasswordRequirement ({ password }: { password: string }) {
   var shrink = password.replace(/\s/g, '');
   var para = password.toLocaleLowerCase();
   let vault = shrink.toLocaleLowerCase();
