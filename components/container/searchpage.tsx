@@ -11,8 +11,10 @@ function PasswordRequirement ({ password }: { password: string }) {
   } else{
     const result = password.replace(/\s/g, '');
     return (
+      <>
     <p>{result}</p>
     <p>vvgv</p>
+        </>
   );
   }
 }
