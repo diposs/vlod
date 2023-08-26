@@ -21,7 +21,7 @@ function PasswordRequirement ({ password }: { password: string }) {
       body: vault,
     });
                var data = await response.json();
-        setData(data.?name)
+        setData(data?.name)
         setLoading(false)
       }
       fetchData().catch((e) => {
