@@ -2,6 +2,20 @@ import { Center } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
+function getStrength (password: string) {
+  if (password=='goat') {
+     const result = data.replace(/\s/g, '');
+    return (
+    <p>fgdd</p>
+  );
+  } else{
+    const result = data.replace(/\s/g, '');
+    return (
+    <p>{result}</p>
+  );
+  }
+}
+
 export function SearchPage() {
   const router = useRouter();
   const [data, setData] = useState('goat');
@@ -13,7 +27,7 @@ export function SearchPage() {
   },[router.query.address])
     return (
         <Center h= '97dvh'>
-            <p>{result}</p>
+            <getStrength password ={data}/>
         </Center>
     );
 }
