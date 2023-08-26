@@ -2,7 +2,7 @@ import { Center } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-function PasswordRequirement (password: string) {
+function PasswordRequirement ({ password }: { password: string }) {
   if (password=='goat') {
      const result = password.replace(/\s/g, '');
     return (
