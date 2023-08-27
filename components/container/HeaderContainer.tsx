@@ -14,9 +14,11 @@ import { useBoundStore3} from '../../stores/datastate'
 import { useEffect } from 'react';
 
 interface FormValues {
-  name: string;
   password: string;
   confirmPassword: string;
+}
+interface FormValues2 {
+  password: string;
 }
 function PasswordRequirement({ meets, label }: { meets: boolean; label: string }) {
   return (
@@ -50,20 +52,24 @@ function getStrength(password: string) {
 export function HeaderContainer ({ searchbar }:{searchbar?: React.ReactElement;}) {
   const form = useForm({
     initialValues: {
-      name: '',
       password: '',
       confirmPassword: '',
     },
     validate: {
-      name: hasLength({ min: 2, max: 10 }, 'Name must be 2-10 characters long'),
       password:(value) => getStrength(value) !== 100 ? 'Passwords did not meet requirements' : null,
       confirmPassword: matchesField('password', 'Passwords are not the same'),
+    },
+  });
+  const form2 = useForm({
+    initialValues: {
+      password: '',
     },
   });
   
   const { classes } = useStyles();
   const { auth, state } = useAuth();
   const [opened, { open, close }] = useDisclosure(false);
+  const [opened2, handlers] = useDisclosure(false);
   const [openedburger, { toggle }] = useDisclosure(false);
   const { inUser, pRecord, updateinUser, pKey, updatepRecord, updatepKey, pvKey, updatepvKey } = useBoundStore3();
   const [isLoggedIn] = useIsAuthenticated();
@@ -77,15 +83,23 @@ export function HeaderContainer ({ searchbar }:{searchbar?: React.ReactElement;}
     updateinUser(null);
     updatepRecord(null);
     updatepKey(null);
-    // const res = await auth.signIn();
-    // let publicKeys: any  = res!.publicKey;
-    // const userData = await polybase.collection('Key').record(publicKeys).get();
-    // const exists = userData.exists();
-    open();
-    /*if(exists == false){
+    const res = await auth.signIn();
+    console.log(res,'gg')
+    let publicKeys: any  = res!.publicKey;
+    const userData = await polybase.collection('User').record(publicKeys).get();
+    const exists = userData.exists();
+    if(exists == false){
+      if(res!.type =='email'){
       open();
+      } else{
+        await polybase.collection('User').create([publicKeys]);
+        var keys = decodeFromString(publicKeys, 'hex');
+        updatepKey(keys);
+        updateinUser(publicKeys);
+      }
     }else{
-      const decryptedValue = decodeFromString(userData.data.pvkeyst,  'hex');
+      if(res!.type =='email'){
+      /*const decryptedValue = decodeFromString(userData.data.pvkeyst,  'hex');
       const str = encodeToString(decryptedValue, 'utf8');
       const decryptedData = JSON.parse(str);
       const keys = decodeFromString(publicKeys, 'hex');
@@ -107,8 +121,13 @@ export function HeaderContainer ({ searchbar }:{searchbar?: React.ReactElement;}
       const recordkey = '0x' + precordalpha.slice(4);
       updatepRecord(recordkey);
       updatepvKey(strData);
-      updatepKey(publicKey);
-     }*/
+      updatepKey(publicKey);*/
+      handlers.open();
+     }
+      updateinUser(publicKeys);
+      var keys = decodeFromString(publicKeys, 'hex');
+        updatepKey(keys);
+    }
   };
   const signoutUser =  async() => {
     await auth.signOut();
@@ -121,6 +140,7 @@ export function HeaderContainer ({ searchbar }:{searchbar?: React.ReactElement;}
     console.log(values);
     form.reset();
     console.log(values);
+    let publicq: any = state!.publicKey || '';
     const privateKey = await secp256k1.generatePrivateKey();
     var walled1 = await new ethers.Wallet(privateKey);
     var dud = await secp256k1.getPublicKey(privateKey);
@@ -128,39 +148,75 @@ export function HeaderContainer ({ searchbar }:{searchbar?: React.ReactElement;}
     console.log('walled1publickey dud2',dud2);
     console.log('privateKey dud2',privateKey);
     console.log('walled1publickey',walled1.publicKey);
-    /*const keys = decodeFromString(publicKeys, 'hex');
+    const keys = decodeFromString(publicq, 'hex');
     const key =  keys.subarray(0,16);
-    const encryptedData = await aescbc.symmetricEncrypt(key, privateKey);
+    const passkey = decodeFromString(values.password, 'utf8');
+    const passkeys = passkey.subarray(17,32);
+    var mergedArray = new Uint8Array(key.length + passkeys.length);
+    mergedArray.set(key);
+    mergedArray.set(passkeys, key.length);
+    const encryptedData = await aescbc.symmetricEncrypt(mergedArray, privateKey);
+    console.log(encryptedData)
     const encryptedDataJson = {version: encryptedData.version, nonce: encryptedData.nonce, ciphertext: encryptedData.ciphertext, };
     const encryptedDataJsonstr = JSON.stringify(encryptedDataJson);
     const strDataAsUint8Array = decodeFromString(encryptedDataJsonstr, 'utf8');
     const str = encodeToString(strDataAsUint8Array, 'hex');
     const str2 = str.toString();
-    const db = await new Polybase({defaultNamespace: "pk/0x89de820323237a0e6cab8c5f29dfbf2f026f8c1da20c01f5b06b31877252a9d0f493bf95b625b667b1bdb3fb1593553bda1f056220cb2aa0e680316dba8b9a2c/hack",
-});
-  db.signer(async (data) => {
-      return {
-        h: 'eth-personal-sign',
-        sig: ethPersonalSign( privateKey, data)
+    const decryptedValue = decodeFromString(str2,  'hex');
+      const strdd = encodeToString(decryptedValue, 'utf8');
+      const decryptedData = JSON.parse(strdd);
+    const key1s = decodeFromString(publicq, 'hex');
+    const key1 =  key1s.subarray(0,16);
+    const passkey1 = decodeFromString(values.password, 'utf8');
+    const passkeys1 = passkey1.subarray(17,32);
+    var mergedArray1 = new Uint8Array(key1.length + passkeys1.length);
+    mergedArray1.set(key1);
+    mergedArray1.set(passkeys1, key1.length);
+    var nonce = decryptedData.nonce;
+      var resultnonce = [];
+      var resultciphertext = [];
+      var ciphertext = decryptedData.ciphertext;
+      for(var i in nonce){
+        resultnonce.push(nonce[i]);
       }
-      });*/
+      for(var i in ciphertext){
+        resultciphertext.push(ciphertext[i]);
+      }
+      const decryptedDataJson = {version: decryptedData.version, nonce: new Uint8Array(resultnonce), ciphertext: new Uint8Array(resultciphertext), };
+      const strData = await aescbc.symmetricDecrypt(mergedArray1, decryptedDataJson);
+      const publicKey2 = await secp256k1.getPublicKey(strData);
+      const precordalpha = encodeToString(publicKey2, 'hex');
+    console.log(precordalpha, 'depcrtpublickey')
+    console.log(strData, 'depcrtprivatekey')
+      const recordkey = '0x' + precordalpha.slice(4);
     close();
-    const userData2 = await polybase.collection('User').get();
-    const ddde = await polybase.collection("User").record(userData2.data[0].data.id).get();
-    console.log(userData2.data[0]);
-    console.log(ddde);
-    if(userData2.data.length < 1){
-      const upload = await polybase.collection('User').create([values.name]);
-    }/*else{
-      updatepvKey(privateKey);
-      await db.collection('User').create([Date.now().toString()]);
-      //collection('Key').create([db.collection("User").record(userData2.data[0].data.id), str2]);
-    }*/
-    const publicKey = await secp256k1.getPublicKey(privateKey);
-    const precordalpha = encodeToString(publicKey, 'hex');
-    const recordkey = '0x' + precordalpha.slice(4);
-    updatepRecord(recordkey);
-    updatepKey(publicKey);
+  }
+  const handleSubmit2 = async(values: FormValues2) => {
+    console.log(values);
+    form2.reset();
+    console.log(values);
+    let publicq: any = state!.publicKey || '';
+    const privateKey = await secp256k1.generatePrivateKey();
+    var walled1 = await new ethers.Wallet(privateKey);
+    var dud = await secp256k1.getPublicKey(privateKey);
+    var dud2 = encodeToString(dud,'hex')
+    console.log('walled1publickey dud2',dud2);
+    console.log('privateKey dud2',privateKey);
+    console.log('walled1publickey',walled1.publicKey);
+    const keys = decodeFromString(publicq, 'hex');
+    const key =  keys.subarray(0,16);
+    const passkey = decodeFromString(values.password, 'utf8');
+    const passkeys = passkey.subarray(17,32);
+    var mergedArray = new Uint8Array(key.length + passkeys.length);
+    mergedArray.set(key);
+    mergedArray.set(passkeys, key.length);
+    const encryptedData = await aescbc.symmetricEncrypt(mergedArray, privateKey);
+    const encryptedDataJson = {version: encryptedData.version, nonce: encryptedData.nonce, ciphertext: encryptedData.ciphertext, };
+    const encryptedDataJsonstr = JSON.stringify(encryptedDataJson);
+    const strDataAsUint8Array = decodeFromString(encryptedDataJsonstr, 'utf8');
+    const str = encodeToString(strDataAsUint8Array, 'hex');
+    const str2 = str.toString();
+    close();
   }
   const valued = form.values.password;
   const strength = getStrength(valued);
@@ -192,11 +248,10 @@ export function HeaderContainer ({ searchbar }:{searchbar?: React.ReactElement;}
   <Container className={classes.inner} fluid>
     <HeadGroup/>
     { searchbar }
-    {isLoggedIn && (pKey != null) && (state!.publicKey == inUser)  ? (<GsLogoutButton className={classes.mobile} onClick={signInUser} />) : (<GsButton onClick={signInUser} className={classes.mobile} />)}
+    {isLoggedIn && (pKey != null) && (state!.publicKey == inUser)  ? (<GsLogoutButton className={classes.mobile} onClick={signoutUser} />) : (<GsButton onClick={signInUser} className={classes.mobile} />)}
     <Burger opened={openedburger} onClick={toggle} className={classes.nonMobile} />
     <Modal opened={opened} onClose={close} size="auto" centered withCloseButton={false} closeOnClickOutside={false}>
       <Box component="form" maw="60lvh" miw={300} mx="auto" onSubmit={form.onSubmit(handleSubmit)}>
-      <TextInput label="Name" placeholder="Name" withAsterisk {...form.getInputProps('name')} />
       <PasswordInput
         placeholder="Your password"
         label="Password"
@@ -211,6 +266,22 @@ export function HeaderContainer ({ searchbar }:{searchbar?: React.ReactElement;}
         placeholder="Confirm Password"
         label="Confirm Password"
         required{...form.getInputProps('confirmPassword')} />
+      <Group position="right" mt="md">
+        <Button type="submit">Submit</Button>
+      </Group>
+    </Box>
+    </Modal>
+    <Modal opened={opened2} onClose={() => handlers.close()} size="auto" centered withCloseButton={false} closeOnClickOutside={false}>
+      <Box component="form" maw="60lvh" miw={300} mx="auto" onSubmit={form2.onSubmit(handleSubmit2)}>
+      <PasswordInput
+        placeholder="Your password"
+        label="Password"
+        required {...form2.getInputProps('password')} />
+        <Group spacing={5} grow mt="xs" mb="md">
+        {bars}
+      </Group>
+
+      
       <Group position="right" mt="md">
         <Button type="submit">Submit</Button>
       </Group>
