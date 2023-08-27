@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Vlod
 
 First, run the development server:
 
@@ -12,27 +12,44 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+-  Generative Ai api access.
+-  ENS use for address search and login banner.
+-  NFT marketplace
+-  NFT search engine via address or ENS
+-  Promt base NFT image generation
+-  Polybase for easier retrival of minted NFT
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Folders and Feature
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- Smart contract written in Solidity. [Click here](https://github.com/diposs/vlod/blob/main/public/Contracts/)
+- Smart contract deployment script. [Click here](https://github.com/diposs/vlod/blob/main/public/script/)
+- Local api for ENS checker for search engine feature. [Click here](https://github.com/diposs/vlod/blob/main/pages/api/ensck.ts)
+- Local api for ENS resolver for login banner. [Click here](https://github.com/diposs/vlod/blob/main/pages/api/ensnm.ts)
+- api for Promt based generative Ai images. [Click here](https://github.com/diposs/vlod/blob/main/pages/api/gen.ts)
+- Login feature for email with wallet encryption [Click here](https://github.com/diposs/vlod/blob/main/components/container/HeaderContainer.tsx)
+- Search engine feature using ENS and Moralis.io [Click here](https://github.com/diposs/vlod/blob/main/components/container/searchresult.tsx)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Images
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+-  Example of the Ai generated image
+<img src='./public/example.png' alt='lurking Darkness' />
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Future Plans
+
+Here are some upcoming feature we will be adding post hackathon :
+
+1) Push Group Chat - 
+We want to add a group chat functionality in every NFT page, where users can discuss on topics related to that particular NFT or NFT collection.
+2) Token Bridging -
+Users can bridge their tokens from one chain to another from our marketplace itself, we will be using connext xcalls for this functionality.
+
+
+## Personal Regret 
+I started the hackathon on thursday. I had so many plans but with only 2 days to go they were too much to achieve. 
