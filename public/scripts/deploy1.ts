@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const Vold_collection = await hre.ethers.getContractFactory("NFTCollection");
+  const Vold_collection = await ethers.getContractFactory("NFTCollection");
   const Vold_collection_contract = await Vold_collection.deploy(
     "Vold NFT Collection",
     "VLD"
