@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const collection_factory = await hre.ethers.getContractFactory(
+  const collection_factory = await ethers.getContractFactory(
     "CollectionFactory"
   );
   const collection = await collection_factory.deploy();
