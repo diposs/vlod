@@ -12,6 +12,15 @@ yarn dev
 pnpm dev
 ```
 
+## Smart Contract deployment addess 
+- [[ARBITRUM Goerli Network NFTCollection ]](https://goerli.arbiscan.io/address/0xd780ab2cc08602508ed61b13010713eab96fcdb6)
+- [[ARBITRUM Goerli Network CollectionFactory ]](https://goerli.arbiscan.io/address/0x0251a699622506150402c00401e1756d895be124)
+- [[ARBITRUM Goerli Network NFTMarketplace ]](https://goerli.arbiscan.io/address/0x443B838748c2573d9B0372C95ba613F59FDd347C)
+- [[Avalanche Fuji Testnet NFTCollection ]](https://testnet.snowtrace.io/address/0xd780ab2cc08602508ed61b13010713eab96fcdb6)
+- [[Avalanche Fuji Testnet CollectionFactory ]](https://testnet.snowtrace.io/address/0x0251a699622506150402c00401e1756d895be124)
+- [[Avalanche Fuji Testnet NFTMarketplace ]](https://testnet.snowtrace.io/address/0x443B838748c2573d9B0372C95ba613F59FDd347C)
+
+
 ## Features
 
 
