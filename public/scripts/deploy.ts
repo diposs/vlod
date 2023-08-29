@@ -2,7 +2,7 @@ import { ethers } from "hardhat";
 
 async function main() {
 
-  const marketplace = await hre.ethers.getContractFactory("NFTMarketplace");
+  const marketplace = await ethers.getContractFactory("NFTMarketplace");
   const marketplace_contract = await marketplace.deploy();
 
   await marketplace_contract.deployed();
