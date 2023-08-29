@@ -7,14 +7,14 @@ const config: HardhatUserConfig = {
   networks: {
     avalanche: {
       chainId: 43113,
-      accounts: [process.env.NEXT_PUBLIC_ACCOUNT_PRIVATE_KEY],
+      accounts: [process.env.NEXT_PUBLIC_ACCOUNT_PRIVATE_KEY|''],
       url: "https://ava-testnet.blastapi.io/275cbdc6-c032-4075-8897-cc50b0db3fd5/ext/bc/C/rpc",
     },
     arbitrum: {
       url:
         "https://arbitrum-goerli.blastapi.io/275cbdc6-c032-4075-8897-cc50b0db3fd5",
       chainId: 421613,
-      accounts: [process.env.NEXT_PUBLIC_ACCOUNT_PRIVATE_KEY],
+      accounts: [process.env.NEXT_PUBLIC_ACCOUNT_PRIVATE_KEY|''],
     },
   },
 };
